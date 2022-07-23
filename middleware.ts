@@ -57,76 +57,46 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     return response
   }
 
-  // if (pathname.startsWith('/prefetch')) {
-  //   console.log('pathname hit:', pathname)
-  //   const slug = pathname.split("/")[2];
-
-  //   let cookiename = `ab-${slug}`
-  //   const buckets = ["original","test"]
-
-  //   // check for cookie
-  //   let bucket = request.cookies.get(cookiename);
-  //   let reqHasBucket = new Boolean(bucket);
-
-  //   // If there's no active bucket in cookies or its value is invalid, get a new one
-  //   if (!bucket || !buckets.includes(bucket)) {
-  //     bucket = getBucket(buckets);
-  //     reqHasBucket = false;
-  //   }
-
-  //   // Modify the request to point to the correct bucket
-  //   let url = request.nextUrl.clone();
-
-  //   // If the bucket is not the original one,
-  //   // Create a rewrite to the page matching the bucket
-  //   if (bucket !== "original") {
-  //     url.pathname = `/prefetch/abtest/${slug}`;
-  //   }
-
-  //   response = NextResponse.rewrite(url);
-
-  //   // Add the bucket to the response cookies if it's not there
-  //   // or if its value was invalid
-  //   if (!reqHasBucket) {
-  //     response.cookies.set(cookiename, bucket);
-  //   }
-  
-  //   return response;
-
-
-  // }
-
   if (pathname.startsWith('/prefetch')) {
-
+    console.log('pathname hit:', pathname)
     const slug = pathname.split("/")[2];
-  
-    // Get the bucket from the cookie
-    let bucket = request.cookies.get(`ab-${slug}`)
-    let hasBucket = !!bucket
-  
+
+    let cookiename = `ab-${slug}`
+    const buckets = ["original","test"]
+
+    // check for cookie
+    let bucket = request.cookies.get(cookiename);
+    let reqHasBucket = new Boolean(bucket);
+
     // If there's no active bucket in cookies or its value is invalid, get a new one
-    if (!bucket || !route.buckets.includes(bucket as any)) {
-      bucket = getBucket(route.buckets)
-      hasBucket = false
+    if (!bucket || !buckets.includes(bucket)) {
+      bucket = getBucket(buckets);
+      reqHasBucket = false;
     }
-  
+
+    // Modify the request to point to the correct bucket
+    let url = request.nextUrl.clone();
+
+    // If the bucket is not the original one,
     // Create a rewrite to the page matching the bucket
-    const url = req.nextUrl.clone()
-    url.pathname = `${route.page}/${bucket}`
-    const res = NextResponse.rewrite(url)
-  
+    if (bucket !== "original") {
+      url.pathname = `/prefetch/abtest/${slug}`;
+    }
+
+    response = NextResponse.rewrite(url);
+
     // Add the bucket to the response cookies if it's not there
     // or if its value was invalid
-    if (!hasBucket) {
-      res.cookies.set(route.cookie, bucket)
+    if (!reqHasBucket) {
+      response.cookies.set(cookiename, bucket);
     }
   
-    return res
+    return response;
+
 
   }
-
-
 }
+
 
 export function getBucket(buckets) {
   let n = cryptoRandom() * 100;
@@ -143,7 +113,3 @@ export function getBucket(buckets) {
 function cryptoRandom() {
   return crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1);
 }
-
-// export const config = {
-//   matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch/:path"],
-// };
