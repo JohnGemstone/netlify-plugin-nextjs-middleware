@@ -44,6 +44,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
   }
 
   if (pathname.startsWith('/prefetch')) {
+    console.log('pathname hit:', pathname)
     const slug = pathname.split("/")[2];
 
     let cookiename = `ab-${slug}`
@@ -69,7 +70,6 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     }
 
     response = NextResponse.rewrite(url);
-    response.headers.set('x-modified-in-rewrite', 'true');
 
     // Add the bucket to the response cookies if it's not there
     // or if its value was invalid
