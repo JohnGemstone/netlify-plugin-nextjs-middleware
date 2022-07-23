@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
+import Link from "next/link";
 
 const Product = ({ data }) => {
   return (
@@ -12,6 +13,26 @@ const Product = ({ data }) => {
         <h1>{data.params.slug}</h1>
         <p>Test layout</p>
         <p>you should have a cookie called "ab-{data.params.slug}" set to "test"</p>
+        <div>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <div className="card">
+              <h3>
+                <Link href="/prefetch/section-1">Section 1</Link>
+              </h3>
+            </div>
+            <div className="card">
+              <h3>
+                <Link href="/prefetch/section-2">Section 2</Link>
+              </h3>
+            </div>
+            <div className="card">
+              <h3>
+                <Link href="/prefetch/section-3">Section 3</Link>
+              </h3>
+            </div>
+          </div>
+        </div>
+      
       </main>
     </>
   );

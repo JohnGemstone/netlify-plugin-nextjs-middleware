@@ -32,7 +32,7 @@ export default function Home() {
           <Link href="/shows/static/3">Add header to static page</Link>
         </p>
         <p>
-          <Link href="/cookies" prefetch={true}>
+          <Link href="/cookies" >
             Cookie API
           </Link>
         </p>
