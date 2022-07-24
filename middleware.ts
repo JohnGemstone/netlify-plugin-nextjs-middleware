@@ -115,5 +115,5 @@ function cryptoRandom() {
 }
 
 export const config = {
-  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch/:path"],
+  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch/section-1","/prefetch/section-2","/prefetch/section-3"],
 };
