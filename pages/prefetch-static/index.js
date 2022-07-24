@@ -5,7 +5,7 @@ import styles from "../../styles/Home.module.css";
 const Prefetch = () => {
   return (
     <main className={styles.main}>
-      <p>Hovering over links should prefetch "ab-static-section" cookies</p>
+      <p>Links should prefetch "ab-static-section" cookies</p>
       <div className="grid">
         <div className="card">
           <h3>

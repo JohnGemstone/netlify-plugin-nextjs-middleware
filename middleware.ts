@@ -57,11 +57,12 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     return response
   }
 
-  if (pathname.startsWith('/prefetch') && pathname !== '/prefetch-static') {
+  if (pathname.startsWith('/prefetch') && pathname !== '/prefetch') {
     console.log('pathname hit:', pathname)
+    console.log('request:', request)
     const slug = pathname.split("/")[2];
 
-    let cookiename = `ab-${slug}`
+    let cookiename = `ab-dynamic-${slug}`
     const buckets = ["original","test"]
 
     // check for cookie
@@ -96,6 +97,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
 
   if (pathname.startsWith('/prefetch-static') && pathname !== '/prefetch-static') {
     console.log('pathname hit:', pathname)
+    console.log('request:', request)
     const slug = pathname.split("/")[2];
 
     let cookiename = `ab-static-${slug}`

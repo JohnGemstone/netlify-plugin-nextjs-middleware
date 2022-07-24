@@ -37,7 +37,10 @@ export default function Home() {
           </Link>
         </p>
         <p>
-          <Link href="/prefetch">Prefetch Middleware test</Link>
+          <Link href="/prefetch">Prefetch Middleware test (dynamic pages)</Link>
+        </p>
+        <p>
+          <Link href="/prefetch-static">Prefetch Middleware test (static pages)</Link>
         </p>
       </main>
     </div>
