@@ -17,17 +17,17 @@ const Product = ({ data }) => {
           <div style={{ display: "flex", gap: "10px" }}>
             <div className="card">
               <h3>
-                <Link href="/prefetch/section-1">Section 1</Link>
+                <Link href="/prefetch-dynamic/section-1">Section 1</Link>
               </h3>
             </div>
             <div className="card">
               <h3>
-                <Link href="/prefetch/section-2">Section 2</Link>
+                <Link href="/prefetch-dynamic/section-2">Section 2</Link>
               </h3>
             </div>
             <div className="card">
               <h3>
-                <Link href="/prefetch/section-3">Section 3</Link>
+                <Link href="/prefetch-dynamic/section-3">Section 3</Link>
               </h3>
             </div>
           </div>

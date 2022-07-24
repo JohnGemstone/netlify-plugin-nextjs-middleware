@@ -9,21 +9,21 @@ const Prefetch = () => {
       <div className="grid">
         <div className="card">
           <h3>
-            <Link href="/prefetch/section-1">
+            <Link href="/prefetch-dynamic/section-1">
               Section 1
             </Link>
           </h3>
         </div>
         <div className="card">
           <h3>
-            <Link href="/prefetch/section-2">
+            <Link href="/prefetch-dynamic/section-2">
               Section 2
             </Link>
           </h3>
         </div>
         <div className="card">
           <h3>
-            <Link href="/prefetch/section-3">
+            <Link href="/prefetch-dynamic/section-3">
               Section 3
             </Link>
           </h3>

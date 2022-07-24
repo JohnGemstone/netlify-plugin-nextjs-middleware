@@ -57,7 +57,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     return response
   }
 
-  if (pathname.startsWith('/prefetch') && pathname !== '/prefetch') {
+  if (pathname.startsWith('/prefetch-dynamic') && pathname !== '/prefetch-dynamic') {
     console.log('pathname hit:', pathname)
     console.log('request:', request)
     const slug = pathname.split("/")[2];
