@@ -59,7 +59,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
 
   if (pathname.startsWith('/prefetch-dynamic') && pathname !== '/prefetch-dynamic') {
     console.log('pathname hit:', pathname)
-    console.log('request:', request)
+    //get section name e.g. section-1
     const slug = pathname.split("/")[2];
 
     let cookiename = `ab-dynamic-${slug}`
@@ -97,7 +97,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
 
   if (pathname.startsWith('/prefetch-static') && pathname !== '/prefetch-static') {
     console.log('pathname hit:', pathname)
-    console.log('request:', request)
+    //get section name e.g. section-1
     const slug = pathname.split("/")[2];
 
     let cookiename = `ab-static-${slug}`
@@ -151,6 +151,6 @@ function cryptoRandom() {
   return crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1);
 }
 
-export const config = {
-  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch-dynamic/:path*","/prefetch-static/:path*"],
-};
+// export const config = {
+//   matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch-dynamic/:path*","/prefetch-static/:path*"],
+// };
