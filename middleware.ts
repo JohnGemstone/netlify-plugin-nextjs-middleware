@@ -81,7 +81,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     // If the bucket is not the original one,
     // Create a rewrite to the page matching the bucket
     if (bucket !== "original") {
-      url.pathname = `/prefetch/abtest/${slug}`;
+      url.pathname = `/prefetch-dynamic/abtest/${slug}`;
     }
 
     response = NextResponse.rewrite(url);
@@ -152,5 +152,5 @@ function cryptoRandom() {
 }
 
 export const config = {
-  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch/:path*","/prefetch-static/:path*"],
+  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch-dynamic/:path*","/prefetch-static/:path*"],
 };

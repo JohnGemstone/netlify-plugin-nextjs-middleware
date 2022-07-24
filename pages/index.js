@@ -36,10 +36,10 @@ export default function Home() {
             Cookie API
           </Link>
         </p>
-        <p>
-          <Link href="/prefetch">Prefetch Middleware test (dynamic pages)</Link>
+        <p style={{backgroundColor:"salmon"}}>
+          <Link href="/prefetch-dynamic">Prefetch Middleware test (dynamic pages)</Link>
         </p>
-        <p>
+        <p style={{backgroundColor:"mediumaquamarine"}}>
           <Link href="/prefetch-static">Prefetch Middleware test (static pages)</Link>
         </p>
       </main>
