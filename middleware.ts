@@ -98,7 +98,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     console.log('pathname hit:', pathname)
     const slug = pathname.split("/")[2];
 
-    let cookiename = `ab-${slug}`
+    let cookiename = `ab-static-${slug}`
     const buckets = ["original","test"]
 
     // check for cookie
