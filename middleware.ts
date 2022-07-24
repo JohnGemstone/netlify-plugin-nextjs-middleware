@@ -57,7 +57,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     return response
   }
 
-  if (pathname.startsWith('/prefetch')) {
+  if (pathname.startsWith('/prefetch') && pathname !== '/prefetch-static') {
     console.log('pathname hit:', pathname)
     const slug = pathname.split("/")[2];
 
@@ -94,7 +94,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     return response;
   }
 
-  if (pathname.startsWith('/prefetch-static')) {
+  if (pathname.startsWith('/prefetch-static') && pathname !== '/prefetch-static') {
     console.log('pathname hit:', pathname)
     const slug = pathname.split("/")[2];
 
