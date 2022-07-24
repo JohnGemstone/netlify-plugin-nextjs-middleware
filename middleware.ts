@@ -151,6 +151,6 @@ function cryptoRandom() {
   return crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1);
 }
 
-// export const config = {
-//   matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch-dynamic/:path*","/prefetch-static/:path*"],
-// };
+export const config = {
+  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch-dynamic/:path*","/prefetch-static/:path*"],
+};
