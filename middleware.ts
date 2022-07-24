@@ -92,8 +92,43 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     }
   
     return response;
+  }
 
+  if (pathname.startsWith('/prefetch-static')) {
+    console.log('pathname hit:', pathname)
+    const slug = pathname.split("/")[2];
 
+    let cookiename = `ab-${slug}`
+    const buckets = ["original","test"]
+
+    // check for cookie
+    let bucket = request.cookies.get(cookiename);
+    let reqHasBucket = new Boolean(bucket);
+
+    // If there's no active bucket in cookies or its value is invalid, get a new one
+    if (!bucket || !buckets.includes(bucket)) {
+      bucket = getBucket(buckets);
+      reqHasBucket = false;
+    }
+
+    // Modify the request to point to the correct bucket
+    let url = request.nextUrl.clone();
+
+    // If the bucket is not the original one,
+    // Create a rewrite to the page matching the bucket
+    if (bucket !== "original") {
+      url.pathname = `/prefetch-static/abtest/${slug}`;
+    }
+
+    response = NextResponse.rewrite(url);
+
+    // Add the bucket to the response cookies if it's not there
+    // or if its value was invalid
+    if (!reqHasBucket) {
+      response.cookies.set(cookiename, bucket);
+    }
+  
+    return response;
   }
 }
 
@@ -115,5 +150,5 @@ function cryptoRandom() {
 }
 
 export const config = {
-  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch/section-1","/prefetch/section-2","/prefetch/section-3"],
+  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch/:path*","/prefetch-static/:path*"],
 };
