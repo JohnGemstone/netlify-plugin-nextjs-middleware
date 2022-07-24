@@ -43,25 +43,3 @@ const Product = ({ data }) => {
 
 export default Product;
 
-export async function getStaticPaths() {
-  const paths = Array(3)
-    .fill("")
-    .map((p, i) => {
-      return {
-        params: { slug: `section-${i + 1}` },
-      };
-    });
-
-  return {
-    paths: paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  return {
-    props: {
-      data: { params },
-    },
-  };
-}
