@@ -21,6 +21,12 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     nextUrl: { pathname },
   } = request
 
+  if (pathname.startsWith('/_next')) {
+    return response
+  }
+
+  console.log('pathname:', pathname)
+
   if (pathname.startsWith('/cookies')) {
     response = NextResponse.next()
     response.cookies.set('netlifyCookie', 'true')
@@ -151,6 +157,6 @@ function cryptoRandom() {
   return crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1);
 }
 
-export const config = {
-  matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch-dynamic/:path*","/prefetch-static/:path*"],
-};
+// export const config = {
+//   matcher: ["/cookies/:path*", "/shows/:path*", "/prefetch-dynamic/:path*","/prefetch-static/:path*"],
+// };
