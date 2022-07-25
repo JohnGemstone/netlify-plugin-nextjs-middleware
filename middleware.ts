@@ -25,7 +25,7 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     return response
   }
 
-  console.log('pathname:', pathname)
+  console.log('pathname:', pathname) 
 
   if (pathname.startsWith('/cookies')) {
     response = NextResponse.next()
