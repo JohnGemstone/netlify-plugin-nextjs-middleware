@@ -21,9 +21,9 @@ export function middleware(request: NextRequest, ev: NextFetchEvent) {
     nextUrl: { pathname },
   } = request
 
-  if (pathname.startsWith('/_next')) {
+
     return response
-  }
+  
 
   console.log('pathname:', pathname) 
 
